@@ -1,8 +1,8 @@
--- CODD FIXED SCHEMA
--- NOTE: On CODD you must use your username database ONLY.
--- Database: rsangareddypeta1
+CREATE DATABASE IF NOT EXISTS christmas_puzzle
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
 
-USE rsangareddypeta1;
+USE christmas_puzzle;
 
 -- USERS
 CREATE TABLE IF NOT EXISTS users (
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS moves (
   FOREIGN KEY (session_id) REFERENCES game_sessions(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- ACHIEVEMENTS
+-- ACHIEVEMENTS (basic storage; we’ll wire logic later)
 CREATE TABLE IF NOT EXISTS achievements (
   id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   code VARCHAR(60) NOT NULL UNIQUE,
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS user_achievements (
   FOREIGN KEY (achievement_id) REFERENCES achievements(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- STORY PROGRESS
+-- STORY PROGRESS (we’ll use later)
 CREATE TABLE IF NOT EXISTS story_progress (
   user_id BIGINT UNSIGNED PRIMARY KEY,
   node_key VARCHAR(80) NOT NULL DEFAULT 'start',
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS story_progress (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- CHALLENGES
+-- CHALLENGES (shareable links)
 CREATE TABLE IF NOT EXISTS challenges (
   id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   creator_user_id BIGINT UNSIGNED NOT NULL,
