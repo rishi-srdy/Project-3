@@ -1,0 +1,39 @@
+/* ============================
+   🎄 Santa Theme Overrides
+   Red • White • Green
+   ============================ */
+
+:root{
+  --red: #c62828;
+  --green: #1b8f5a;
+  --white: #ffffff;
+}
+
+/* Background glow (festive, subtle) */
+body{
+  background:
+    radial-gradient(900px 600px at 15% 10%, rgba(198,40,40,0.35), transparent 60%),
+    radial-gradient(900px 600px at 85% 10%, rgba(27,143,90,0.35), transparent 60%),
+    linear-gradient(180deg, #0b1220, #070b14);
+}
+
+/* Header gradient */
+.topbar{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(198,40,40,0.35),
+      rgba(27,143,90,0.35)
+    );
+}
+
+/* Branding emphasis */
+.brand-title{
+  color: var(--white);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.brand-sub{
+  color: rgba(255,255,255,0.75);
+}

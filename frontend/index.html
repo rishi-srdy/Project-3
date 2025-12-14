@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Santa’s Workshop – Christmas Fifteen Puzzle</title>
+
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/santa-theme.css" />
+  <link rel="stylesheet" href="./css/animations.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-title">🎅 Santa’s Workshop Puzzle</div>
+      <div class="brand-sub">Christmas Fifteen Puzzle (Graduate)</div>
+    </div>
+
+    <div class="topbar-actions">
+      <div id="userBadge" class="badge hidden"></div>
+      <button id="btnOpenAuth" class="btn">Login / Register</button>
+      <button id="btnLogout" class="btn ghost hidden">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="controls">
+        <label class="field">
+          <span>Puzzle Size</span>
+          <select id="sizeSelect">
+            <option value="3">3×3</option>
+            <option value="4" selected>4×4</option>
+            <option value="6">6×6</option>
+            <option value="8">8×8</option>
+            <option value="10">10×10</option>
+          </select>
+        </label>
+
+        <button id="btnShuffle" class="btn">Shuffle</button>
+        <button id="btnReset" class="btn ghost">Reset</button>
+
+        <div class="stats">
+          <div class="stat"><span class="label">Time</span><span id="timeText" class="value">00:00</span></div>
+          <div class="stat"><span class="label">Moves</span><span id="movesText" class="value">0</span></div>
+        </div>
+      </div>
+
+      <div class="board-wrap">
+        <div id="board" class="board" aria-label="Puzzle board"></div>
+        <div id="winOverlay" class="overlay hidden">
+          <div class="overlay-card pop">
+            <div class="overlay-title">🎄 You fixed the workshop!</div>
+            <div class="overlay-sub">Nice work. Your run has been saved.</div>
+            <button id="btnPlayAgain" class="btn">Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hintbar">
+        <div class="muted">Tip: Click a tile adjacent to the empty slot to move it.</div>
+        <div id="statusText" class="status"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">🏆 Leaderboard (by size)</div>
+      <div class="leader-controls">
+        <label class="field inline">
+          <span>Size</span>
+          <select id="lbSizeSelect">
+            <option value="3">3×3</option>
+            <option value="4" selected>4×4</option>
+            <option value="6">6×6</option>
+            <option value="8">8×8</option>
+            <option value="10">10×10</option>
+          </select>
+        </label>
+        <button id="btnRefreshLB" class="btn ghost">Refresh</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Time (s)</th>
+              <th>Moves</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="lbBody">
+            <tr><td colspan="4" class="muted">Login and complete a puzzle to appear here.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Account</div>
+        <button id="btnCloseAuth" class="btn ghost">✕</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Login</button>
+        <button class="tab" data-tab="register">Register</button>
+      </div>
+
+      <div class="tabpane active" id="tab-login">
+        <label class="field">
+          <span>Email</span>
+          <input id="loginEmail" type="email" placeholder="you@gsu.edu" />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="loginPass" type="password" placeholder="Min 8 chars" />
+        </label>
+        <button id="btnLogin" class="btn wide">Login</button>
+      </div>
+
+      <div class="tabpane" id="tab-register">
+        <label class="field">
+          <span>Display Name</span>
+          <input id="regName" type="text" placeholder="Santa Helper" />
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input id="regEmail" type="email" placeholder="you@gsu.edu" />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="regPass" type="password" placeholder="Min 8 chars" />
+        </label>
+        <button id="btnRegister" class="btn wide">Register</button>
+      </div>
+
+      <div id="authMsg" class="msg"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+<div class="snow" aria-hidden="true"></div>
+</html>
