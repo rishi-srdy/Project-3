@@ -1,7 +1,7 @@
 # Santa’s Workshop Puzzle – Project 3
 
 ## Student
-Name: Rishikesh Sangareddypeta  
+Name: Rishikesh Sangareddypeta, Ajay Varada
 Course: CSC 4370 / 6370  
 Project: Christmas Fifteen Puzzle  
 
